@@ -1,0 +1,2 @@
+/usr/bin/ar qc librws_static.a  CMakeFiles/rws_static.dir/src/rws_common.c.o CMakeFiles/rws_static.dir/src/rws_error.c.o CMakeFiles/rws_static.dir/src/rws_frame.c.o CMakeFiles/rws_static.dir/src/librws.c.o CMakeFiles/rws_static.dir/src/rws_list.c.o CMakeFiles/rws_static.dir/src/rws_memory.c.o CMakeFiles/rws_static.dir/src/rws_socketpriv.c.o CMakeFiles/rws_static.dir/src/rws_socketpub.c.o CMakeFiles/rws_static.dir/src/rws_string.c.o CMakeFiles/rws_static.dir/src/rws_thread.c.o
+/usr/bin/ranlib librws_static.a

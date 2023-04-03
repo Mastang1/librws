@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC  -rdynamic CMakeFiles/test_librws_creation.dir/test_librws_creation.c.o  -o test_librws_creation   -L/home/tang/myproject/tang_test/librws_github/librws/build  -Wl,-rpath,/home/tang/myproject/tang_test/librws_github/librws/build: ../librws.so -lpthread 

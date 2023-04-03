@@ -61,14 +61,14 @@ static const char * k_rws_socket_sec_websocket_accept = "Sec-WebSocket-Accept";
 
 struct rws_socket_struct {
 	int port;
-	rws_socket_t socket;
+	rws_socket_t socket;   /* typedef int rws_socket_t */
 	char * scheme;
 	char * host;
 	char * path;
 
 	char * sec_ws_accept; // "Sec-WebSocket-Accept" field from handshake
 
-	rws_thread work_thread;
+	rws_thread work_thread;	/* 在connect时候进行线程创建 */
 
 	int command;
 
@@ -77,21 +77,21 @@ struct rws_socket_struct {
 	rws_bool is_connected; // sock connected + handshake done
 
 	void * user_object;
-	rws_on_socket on_connected;
+	rws_on_socket on_connected;	/* 函数指针 rws_on_socket */
 	rws_on_socket on_disconnected;
 	rws_on_socket_recvd_text on_recvd_text;
 	rws_on_socket_recvd_bin on_recvd_bin;
 
 	void * received;
-	size_t received_size; // size of 'received' memory
-	size_t received_len; // length of actualy readed message
+	size_t received_size; // size of 'received' memory**
+	size_t received_len; // length of actualy readed message**
 
 	_rws_list * send_frames;
 	_rws_list * recvd_frames;
 
 	rws_error error;
 
-	rws_mutex work_mutex;
+	rws_mutex work_mutex;	/* 同nopoll一样，mutex的实现使用void *来转换 */
 	rws_mutex send_mutex;
 };
 
