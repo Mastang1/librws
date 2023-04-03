@@ -1,1 +1,0 @@
-/usr/bin/cc  -fPIC  -rdynamic CMakeFiles/test_librws_socket_get_set.dir/test_librws_socket_get_set.c.o  -o test_librws_socket_get_set   -L/home/tang/myproject/tang_test/librws_github/librws/build  -Wl,-rpath,/home/tang/myproject/tang_test/librws_github/librws/build: ../librws.so -lpthread 

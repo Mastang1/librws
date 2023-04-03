@@ -4,6 +4,7 @@
 *.obj
 *.elf
 .vscode
+build
 # Precompiled Headers
 *.gch
 *.pch
