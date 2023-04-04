@@ -36,10 +36,11 @@ typedef enum _rws_opcode {
 	rws_opcode_pong = 0xA // %xA denotes a pong
 } rws_opcode;
 
+/* 该结结构体是根据websocket的数据报设计的 */
 typedef struct _rws_frame_struct {
 	void * data;
 	size_t data_size;
-	rws_opcode opcode;
+	rws_opcode opcode;		/*表示包的类型 PING PONG 等*/
 	unsigned char mask[4];
 	rws_bool is_masked;
 	rws_bool is_finished;

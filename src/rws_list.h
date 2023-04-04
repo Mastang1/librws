@@ -26,6 +26,7 @@
 
 #include <stdio.h>
 
+/* union结构*/
 typedef union _rws_node_value_union {
 	void * object;
 	char * string;
@@ -33,6 +34,7 @@ typedef union _rws_node_value_union {
 	unsigned int uint_value;
 } _rws_node_value;
 
+/* web 接收报文放在该链表中 */
 typedef struct _rws_node_struct {
 	_rws_node_value value;
 	struct _rws_node_struct * next;

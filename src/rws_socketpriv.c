@@ -501,6 +501,11 @@ void rws_socket_connect_to_host(rws_socket s) {
 	}
 }
 
+/**
+ * @brief 将联网过程放在单独线程中，设计成状态机的形式，有时候可以减少线程的创建数目
+ * 
+ * @param user_object 
+ */
 static void rws_socket_work_th_func(void * user_object) {
 	rws_socket s = (rws_socket)user_object;
 	size_t loop_number = 0;
@@ -512,6 +517,8 @@ static void rws_socket_work_th_func(void * user_object) {
 			case COMMAND_SEND_HANDSHAKE: rws_socket_send_handshake(s); break;
 			case COMMAND_WAIT_HANDSHAKE_RESPONCE: rws_socket_wait_handshake_responce(s); break;
 			case COMMAND_DISCONNECT: rws_socket_send_disconnect(s); break;
+			
+			/*空闲状态下，可以循环执行心跳*/
 			case COMMAND_IDLE:
 				if (loop_number >= 400) {
 					loop_number = 0;
@@ -537,8 +544,8 @@ static void rws_socket_work_th_func(void * user_object) {
 		switch (s->command) {
 			case COMMAND_INFORM_CONNECTED:
 				s->command = COMMAND_IDLE;
-				if (s->on_connected) {
-					s->on_connected(s);
+				if (s->on_connected) {		//判断函数指针是否为NULL
+					s->on_connected(s);		//调用on_conn函数
 				}
 				break;
 			case COMMAND_INFORM_DISCONNECTED: {
