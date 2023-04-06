@@ -518,7 +518,9 @@ static void rws_socket_work_th_func(void * user_object) {
 			case COMMAND_WAIT_HANDSHAKE_RESPONCE: rws_socket_wait_handshake_responce(s); break;
 			case COMMAND_DISCONNECT: rws_socket_send_disconnect(s); break;
 			
-			/*空闲状态下，可以循环执行心跳*/
+			/*"COMMAND_IDLE"状态的实际意义包括:
+								握手成功，连接建立，正在进行数据收发*/
+
 			case COMMAND_IDLE:
 				if (loop_number >= 400) {
 					loop_number = 0;
